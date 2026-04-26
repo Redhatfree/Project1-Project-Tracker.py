@@ -4,8 +4,22 @@ Created on Sun Apr 19 01:13:27 2026
 
 @author: Rouzbeh
 """
+Import json 
+Import os
+FILE_NAME ="data.json"
 
-tasks = []
+def load_tasks():
+    if os.path.exists(FILE_NAME):
+        with open(FILE_NAME, "r") as f:
+            return json.load(f)
+    else:
+        return []
+
+def save_tasks(tasks):
+    with open(FILE_NAME, "w") as f:
+        json.dump(tasks, f, indent=4)
+
+tasks = load_tasks()
 
 while True:
     print("\n1. Show tasks")
@@ -22,23 +36,26 @@ while True:
             for i, task in enumerate(tasks, 1):
                 print(f"{i}. {task}")
 
-    elif choice == "2":
-        task = input("Enter new task: ")
-        tasks.append(task)
-        print("Task added!")
+   elif choice == "2":
+    task = input("Enter new task: ")
+    tasks.append(task)
+    save_tasks(tasks)
+    print("Task added!")
 
     elif choice == "3":
-        if not tasks:
-            print("No tasks to delete.")
+    if not tasks:
+        print("No tasks to delete.")
+    else:
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task}")
+        index = int(input("Enter task number to delete: ")) - 1
+
+        if 0 <= index < len(tasks):
+            tasks.pop(index)
+            save_tasks(tasks)
+            print("Task deleted!")
         else:
-            for i, task in enumerate(tasks, 1):
-                print(f"{i}. {task}")
-            index = int(input("Enter task number to delete: ")) - 1
-            if 0 <= index < len(tasks):
-                tasks.pop(index)
-                print("Task deleted!")
-            else:
-                print("Invalid number.")
+            print("Invalid number.")
 
     elif choice == "4":
         print("Goodbye!")
