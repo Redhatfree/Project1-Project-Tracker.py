@@ -67,7 +67,7 @@ while True:
         else:
             print("Invalid number.")
 
-    elif choice == "4":
+    elif choice == "5":
         print("Goodbye!")
         break
 
