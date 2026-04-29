@@ -4,7 +4,7 @@ I am currently building my skills in:
 - Python programming 🐍
 - Data analysis (Pandas)
 
-- eatures Added Today: 28.04.2026
+Features Added Today: 28.04.2026
 Data Persistence: Uses json to save and load tasks, so your data is never lost.
 Smart Search: A case-insensitive search feature to find specific tasks quickly.
 Random Task Picker: Uses the random module to help with decision fatigue.
